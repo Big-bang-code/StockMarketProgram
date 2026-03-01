@@ -6,7 +6,7 @@ import {
   Legend,
 } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
-import { ChartData } from '../types';
+import type { ChartData } from '../types';
 
 // 注册 Chart.js 组件
 ChartJS.register(ArcElement, Tooltip, Legend);

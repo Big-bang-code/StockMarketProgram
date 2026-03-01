@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import { useAppContext } from '../context/AppContext';
 
 const SettingsPage: React.FC = () => {
-  const { state } = useAppContext();
   const [name, setName] = useState('用户');
   const [email, setEmail] = useState('user@example.com');
   const [currency, setCurrency] = useState('CNY');

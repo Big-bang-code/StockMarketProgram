@@ -1,5 +1,6 @@
-import React, { createContext, useContext, useReducer, ReactNode } from 'react';
-import { AppState, AppAction, Record, Statistics } from '../types';
+import React, { createContext, useContext, useReducer } from 'react';
+import type { ReactNode } from 'react';
+import type { AppState, AppAction, Record } from '../types';
 
 // 初始状态
 const initialState: AppState = {
@@ -87,62 +88,6 @@ const AppContext = createContext<AppContextType | undefined>(undefined);
 // 上下文提供器
 export const AppProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [state, dispatch] = useReducer(appReducer, initialState);
-
-  // 模拟数据获取
-  const fetchData = async () => {
-    dispatch({ type: 'SET_LOADING', payload: true });
-    try {
-      // 这里应该是 API 调用
-      // 暂时使用模拟数据
-      const mockRecords: Record[] = [
-        {
-          id: 1,
-          recordType: 'income',
-          amount: 8000,
-          category: '工资',
-          recordDate: '2026-03-01',
-          description: '本月工资',
-          createdAt: new Date().toISOString(),
-          updatedAt: new Date().toISOString(),
-        },
-        {
-          id: 2,
-          recordType: 'expense',
-          amount: 150,
-          category: '餐饮',
-          recordDate: '2026-03-01',
-          description: '午餐',
-          createdAt: new Date().toISOString(),
-          updatedAt: new Date().toISOString(),
-        },
-        {
-          id: 3,
-          recordType: 'income',
-          amount: 300,
-          category: '投资收益',
-          recordDate: '2026-02-29',
-          description: '股票分红',
-          createdAt: new Date().toISOString(),
-          updatedAt: new Date().toISOString(),
-        },
-        {
-          id: 4,
-          recordType: 'expense',
-          amount: 80,
-          category: '交通',
-          recordDate: '2026-02-28',
-          description: '地铁费',
-          createdAt: new Date().toISOString(),
-          updatedAt: new Date().toISOString(),
-        },
-      ];
-      dispatch({ type: 'SET_RECORDS', payload: mockRecords });
-    } catch (error) {
-      dispatch({ type: 'SET_ERROR', payload: '获取数据失败' });
-    } finally {
-      dispatch({ type: 'SET_LOADING', payload: false });
-    }
-  };
 
   // 添加记录
   const addRecord = (record: Omit<Record, 'id' | 'createdAt' | 'updatedAt'>) => {

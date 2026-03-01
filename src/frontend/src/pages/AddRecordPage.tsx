@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppContext } from '../context/AppContext';
-import { RecordType } from '../types';
+import type { RecordType } from '../types';
 
 const AddRecordPage: React.FC = () => {
   const navigate = useNavigate();
@@ -132,7 +132,7 @@ const AddRecordPage: React.FC = () => {
               name="description"
               value={formData.description}
               onChange={handleChange}
-              rows="3"
+              rows={3}
               placeholder="添加描述信息..."
               className="input"
             />
